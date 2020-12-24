@@ -18,13 +18,24 @@ body{
 }
 
 .content{
-    height: 40rem;
+    height: 46rem;
     background: #2e2d31;
     border-radius: .8rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.timer-name{
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    margin-top: 1rem;
+    left: 0;
+    margin-left: 4.4rem;
 }
 
 .numbers{
@@ -35,6 +46,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .on{
@@ -128,13 +140,14 @@ button, a{
 }
 
 .form{
+    display: none;
     position: absolute;
 }
 
 .container{
-    background: #465069;
+    background: #3a404e;
     height: 30rem;
-    width: 40rem;
+    width: 20rem;
     border-radius: .8rem;
     display: flex;
     align-items: center;
@@ -143,8 +156,8 @@ button, a{
 
 .name-form{
     height: 5rem;
-    width: 40rem;
-    background: #44475a;
+    width: 20rem;
+    background: #353846;
     display: flex;
     align-items: center;
     position: relative;
@@ -154,8 +167,18 @@ button, a{
     color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 18px;
+}
 
+.cancel-button{
+    position: absolute;
+    right: 0;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.cancel-button path{
+    fill: #ff5555;
 }
 
 .label{
@@ -165,14 +188,14 @@ button, a{
 label{
     color: white;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
     margin-bottom: 20px;
 }
 
 input{
-    height: 2rem;
-    width: 20rem;
+    height: 2.5rem;
+    width: 15rem;
     padding: .6rem;
     color: black;
     font-family: 'Ubuntu', sans-serif;
@@ -206,9 +229,15 @@ input:focus{
         width: 40rem;
     }
 
+    .timer-name{
+        font-size: 45px;
+        margin-left: 5rem;
+    }
+
     .numbers{
         height: 30rem;
         width: 38rem;
+        margin-top: 50px;
     }
 
     .numbers p{
@@ -218,6 +247,26 @@ input:focus{
     button, a{
         height: 6rem;
         width: 38rem;
+    }
+
+    .container{
+        height: 32rem;
+        width: 40rem;
+    }
+
+    .name-form{
+        height: 5rem;
+        width: 40rem;
+        font-size: 28px;
+    }
+
+    label{
+        font-size: 22px;
+    }
+
+    input{
+        height: 2.5rem;
+        width: 30rem;
     }
 
 }
@@ -232,9 +281,16 @@ input:focus{
         flex-direction: column;
     }
 
+    .timer-name{
+        font-size: 50px;
+        margin-top: .6rem;
+        margin-left: 8rem;
+    }
+
     .numbers{
         width: 50rem;
         height: 20rem;
+        margin: 0;
     }
 
     .numbers p{
@@ -265,6 +321,31 @@ input:focus{
     .add-timer{
         width: 38rem;
     }
+
+    .container{
+        height: 35rem;
+        width: 40rem;
+    }
+
+    .name-form{
+        height: 5rem;
+        width: 40rem;
+        font-size: 28px;
+    }
+
+    label{
+        font-size: 22px;
+    }
+
+    input{
+        height: 3rem;
+        width: 25rem;
+    }
+
+    .save-form{
+        width: 25rem;
+    }
+
 }
 
 /* animations */    

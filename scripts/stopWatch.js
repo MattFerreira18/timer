@@ -1,11 +1,21 @@
-export const playPause = document.querySelector('.play') || document.querySelector('.pause');
-export const reset = document.querySelector('.reset');
-export const timeNumbers = document.querySelector('.time-number');
+const playPause = document.querySelector('.play');
+const reset = document.querySelector('.reset');
+const timeNumbers = document.querySelector('.time-number');
 let seconds = 0;
 let timer;
 
-playPause.addEventListener('click', initOrPause);
-reset.addEventListener('click', resetTime);
+document.addEventListener('click', (event) => {
+
+    if (event.target === playPause) initOrPause();
+    if (event.target === reset) resetTime();
+
+});
+
+window.addEventListener('keydown', (keyEvent) => {
+
+    if (keyEvent.code === 'Space') return initOrPause();
+
+});
 
 function formatTime(seconds) {
 
@@ -14,7 +24,7 @@ function formatTime(seconds) {
 
 };
 
-export function initOrPause() {
+function initOrPause() {
 
     if (playPause.textContent === 'Play') {
 
@@ -35,14 +45,17 @@ export function initOrPause() {
 
     } else {
 
-        playPause.textContent = 'Play';
-        playPause.classList.remove('pause');
-        playPause.classList.add('play');
+        setTimeout(() => {
 
-        timeNumbers.classList.remove('on');
-        timeNumbers.classList.add('paused');
+            playPause.textContent = 'Play';
+            playPause.classList.remove('pause');
+            playPause.classList.add('play');
 
-        clearInterval(timer);
+            timeNumbers.classList.remove('on');
+            timeNumbers.classList.add('paused');
+            clearInterval(timer);
+
+        }, 600);
 
     };
 
