@@ -1,8 +1,11 @@
 {
   "name": "timer-exercise",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "license": "MIT",
+  "scripts": {
+    "start": "electron scripts/app/main.js"
+  },
   "dependencies": {
     "electron": "^11.1.1"
   }

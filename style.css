@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;500;700&display=swap'); 
-/* 'JetBrains Mono', monospace */
 
 * {
     margin: none;
@@ -8,67 +7,80 @@
     box-sizing: border-box;
 }
 
-
-/* 
-    colors:
-        #121214
-        #6a39dd
-        #8257e5
-        #201f21
-        #2e2d31
-        #1ecf68
-        rgb( 34, 34, 34)
-*/
-
 body{
-    /* background: #6a39dd; */
     background: #121214;
-    padding: 2rem;
+    padding: .8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Ubuntu', sans-serif;
+    margin: none;
 }
 
 .content{
-    height: 50rem;
-    width: 60rem;
+    height: 46rem;
     background: #2e2d31;
     border-radius: .8rem;
-    padding: 8rem;
-
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+}
+
+.timer-name{
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    margin-top: 1rem;
+    left: 0;
+    margin-left: 4.4rem;
 }
 
 .numbers{
     height: 20rem;
-    width: 50rem;
+    width: 16rem;
     background: #191b22;
     border-radius: .8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
-.numbers p{
+.on{
     font-family: 'JetBrains Mono', monospace;
-    font-size: 100px;
+    font-size: 3rem;
     color: #ffffff;
+}
+
+.time{
+    display: flex;
+}
+
+.paused{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3rem;
+    color: #f8a750;
+    opacity: 1;
+    animation: fadeIn 3s linear infinite;
 }
 
 .buttons{
     margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-button{
+button, a{
     height: 4rem;
-    width: 12rem;
+    width: 14rem;
+    margin-bottom: 1rem;
     border: none;
     cursor: pointer;
-    
     font-size: 16px;
     font-weight: bold;
     font-family: 'Ubuntu', sans-serif;
@@ -77,32 +89,271 @@ button{
     outline: none;
 }
 
-.play-pause{
+.play{
     background: #1ecf68;
-    /* background: #8257e5; */
     transition: 300ms;
-    margin-right: 1rem;
 }
 
-.play-pause:hover{
-    background: #6e3edf;
+.play:hover{
     background: #06b64f;
 }
 
-.restart{
-    background: #8257e5;
+.pause{
+    background: #f8a750;
     transition: 300ms;
-    margin-right: 1rem;
 }
 
-.restart:hover{
+.pause:hover{
+    background: #fa8b15;
+}
+
+.reset{
+    background: #8257e5;
+    transition: 300ms;
+}
+
+.reset:hover{
     background: #6e3edf;
 }
 
 .timer-stopwatch{
     background: #bd93f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 300ms;
 }
 
 .timer-stopwatch:hover{
-    background: #a168f0;
+    background: #9754f5;
 }
+
+.add-timer{
+    background: #6272a4;
+    transition: 300ms;
+
+}
+
+.add-timer:hover{
+    background: #475479;
+}
+
+.form{
+    display: none;
+    position: absolute;
+}
+
+.container{
+    background: #3a404e;
+    height: 30rem;
+    width: 20rem;
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.name-form{
+    height: 5rem;
+    width: 20rem;
+    background: #353846;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    border-radius: .8rem .8rem 0 0;
+    padding: 1rem;
+    color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.cancel-button{
+    position: absolute;
+    right: 0;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.cancel-button path{
+    fill: #ff5555;
+}
+
+.label{
+    margin: .4rem;
+}
+
+label{
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 20px;
+}
+
+input{
+    height: 2.5rem;
+    width: 15rem;
+    padding: .6rem;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: .6rem;
+    outline: none;
+}
+
+input:focus{
+    border: 2px solid #1ecf68;
+}
+
+.save-form{
+    background: #1ecf68;
+    transition: 300ms;
+    margin-top: 10px;
+}
+
+.save-form:hover{
+    background: #06b64f;
+}
+
+@media(min-width:600px){
+    body{
+        padding: 2rem;
+    }
+
+    .content{
+        height: 58rem;
+        width: 40rem;
+    }
+
+    .timer-name{
+        font-size: 45px;
+        margin-left: 5rem;
+    }
+
+    .numbers{
+        height: 30rem;
+        width: 38rem;
+        margin-top: 50px;
+    }
+
+    .numbers p{
+        font-size: 6rem;
+    }
+
+    button, a{
+        height: 6rem;
+        width: 38rem;
+    }
+
+    .container{
+        height: 32rem;
+        width: 40rem;
+    }
+
+    .name-form{
+        height: 5rem;
+        width: 40rem;
+        font-size: 28px;
+    }
+
+    label{
+        font-size: 22px;
+    }
+
+    input{
+        height: 2.5rem;
+        width: 30rem;
+    }
+
+}
+
+/* pc version */
+@media(min-width:800px){
+
+    .content{
+        height: 50rem;
+        width: 60rem;
+        padding: 8rem;
+        flex-direction: column;
+    }
+
+    .timer-name{
+        font-size: 50px;
+        margin-top: .6rem;
+        margin-left: 8rem;
+    }
+
+    .numbers{
+        width: 50rem;
+        height: 20rem;
+        margin: 0;
+    }
+
+    .numbers p{
+        font-size: 8rem;
+    }
+
+    .buttons{
+        flex-direction: row;
+    }
+
+    button, a{
+        height: 4rem;
+        width: 12rem;
+    }
+
+    .play{
+        margin-right: 1rem;
+    }
+
+    .pause{
+        margin-right: 1rem;
+    }
+
+    .reset{
+        margin-right: 1rem;
+    }
+
+    .add-timer{
+        width: 38rem;
+    }
+
+    .container{
+        height: 35rem;
+        width: 40rem;
+    }
+
+    .name-form{
+        height: 5rem;
+        width: 40rem;
+        font-size: 28px;
+    }
+
+    label{
+        font-size: 22px;
+    }
+
+    input{
+        height: 3rem;
+        width: 25rem;
+    }
+
+    .save-form{
+        width: 25rem;
+    }
+
+}
+
+/* animations */    
+@keyframes fadeIn {
+
+0% {opacity:0.4;}
+50% {opacity:1;}
+100% {opacity: 0.4;}
+
+}
+
