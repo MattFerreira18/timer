@@ -9,7 +9,7 @@
 
 body{
     background: #121214;
-    padding: .8rem;
+    padding: .4rem .8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@ body{
     height: 46rem;
     background: #2e2d31;
     border-radius: .8rem;
-    padding: 2rem;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,7 +64,7 @@ body{
     font-size: 3rem;
     color: #f8a750;
     opacity: 1;
-    animation: fadeIn 3s linear infinite;
+    animation: repeat-fadein 3s linear infinite;
 }
 
 .buttons{
@@ -142,6 +142,8 @@ button, a{
 .form{
     display: none;
     position: absolute;
+    top: 100px;
+    animation: drop 500ms linear;
 }
 
 .container{
@@ -213,19 +215,20 @@ input:focus{
     background: #1ecf68;
     transition: 300ms;
     margin-top: 10px;
+    width: 15rem;
 }
 
 .save-form:hover{
     background: #06b64f;
 }
 
-@media(min-width:600px){
+@media(min-width:400px){
     body{
-        padding: 2rem;
+        padding: 4rem;
     }
 
     .content{
-        height: 58rem;
+        height: 50rem;
         width: 40rem;
     }
 
@@ -235,49 +238,62 @@ input:focus{
     }
 
     .numbers{
-        height: 30rem;
-        width: 38rem;
-        margin-top: 50px;
+        height: 20rem;
+        width: 20rem;
+        margin-top: 30px;
     }
 
     .numbers p{
-        font-size: 6rem;
+        font-size: 4rem;
     }
 
     button, a{
-        height: 6rem;
-        width: 38rem;
+        height: 4rem;
+        width: 22rem;
+    }
+
+    .form{
+        top: 160px;
     }
 
     .container{
-        height: 32rem;
-        width: 40rem;
+        height: 30rem;
+        width: 24rem;
     }
 
     .name-form{
         height: 5rem;
-        width: 40rem;
+        width: 24rem;
         font-size: 28px;
     }
 
+    .save-form{
+        width: 18rem;
+    }
+
+
     label{
-        font-size: 22px;
+        font-size: 18px;
     }
 
     input{
         height: 2.5rem;
-        width: 30rem;
+        width: 18rem;
     }
-
 }
 
 /* pc version */
-@media(min-width:800px){
+@media(min-width:780px){
+
+    body{
+        padding: 1.8rem;
+    }
 
     .content{
-        height: 50rem;
+        height: 40rem;
         width: 60rem;
-        padding: 8rem;
+        padding: 6rem 2rem 2rem;
+        margin-top: 50px;
         flex-direction: column;
     }
 
@@ -304,22 +320,16 @@ input:focus{
     button, a{
         height: 4rem;
         width: 12rem;
-    }
-
-    .play{
-        margin-right: 1rem;
-    }
-
-    .pause{
-        margin-right: 1rem;
-    }
-
-    .reset{
+        margin-bottom: 1rem;
         margin-right: 1rem;
     }
 
     .add-timer{
         width: 38rem;
+    }
+
+    .form{
+        top: 140px;
     }
 
     .container{
@@ -344,16 +354,27 @@ input:focus{
 
     .save-form{
         width: 25rem;
+        margin: 1rem;
     }
 
 }
 
 /* animations */    
-@keyframes fadeIn {
+@keyframes repeat-fadein {
 
-0% {opacity:0.4;}
-50% {opacity:1;}
-100% {opacity: 0.4;}
+    0% {opacity:0.4;}
+    50% {opacity:1;}
+    100% {opacity: 0.4;}
 
 }
 
+@keyframes drop {
+
+    from {
+        top: -100%;
+    }
+    to {
+        top: 160px;
+    }
+
+}

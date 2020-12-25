@@ -28,20 +28,22 @@ function initOrPause() {
 
     if (playPause.textContent === 'Play') {
 
+        setTimeout(() => {
 
-        playPause.textContent = 'Pause';
-        playPause.classList.remove('play');
-        playPause.classList.add('pause');
+            playPause.textContent = 'Pause';
+            playPause.classList.remove('play');
+            playPause.classList.add('pause');
 
-        timeNumbers.classList.remove('paused');
-        timeNumbers.classList.add('on');
+            timeNumbers.classList.remove('paused');
+            timeNumbers.classList.add('on');
 
-        timer = setInterval(() => {
-            seconds++;
-            timeNumbers.innerHTML = formatTime(seconds);
+            timer = setInterval(() => {
+                seconds++;
+                timeNumbers.innerHTML = formatTime(seconds);
 
-        }, 1000);
+            }, 1000);
 
+        }, 600);
 
     } else {
 
