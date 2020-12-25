@@ -1,15 +1,33 @@
 {
-  "name": "timer-exercise",
+  "name": "timer",
+  "description": "a simple timer and stopwatch program",
   "version": "1.0.0",
   "main": "main.js",
+  "author": "<matheusgustomf@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "electron scripts/app/main.js"
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:all": "npm-run-all -p dist:*",
+    "dist:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps"
   },
   "devDependencies": {
-    "electron": "^11.1.1"
+    "electron": "^11.1.1",
+    "electron-builder": "^22.9.1"
   },
   "dependencies": {
     "dotenv": "^8.2.0"
+  },
+  "build": {
+    "linux": {
+      "category": "Utility",
+      "icon": "build/png/icon@16x.png",
+      "target": [
+        "deb"
+      ]
+    }
   }
 }
