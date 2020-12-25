@@ -46,14 +46,6 @@ function saveTimeCfg() {
     console.log(fullTime, Date.parse(fullTime), new Date(fullTime).toISOString());
 
 
-    const contentDIV = document.getElementsByClassName('content');
-    const newDiv = contentDIV.createElement('div');
-    newP = newDiv.createElement('p');
-    const contentP = timerName;
-
-    // console.log(contentDIV)
-    // contentDIV.firstChild.innerHTML(sampleTimerName);
-
     // organize the date
 
     closeForm()
