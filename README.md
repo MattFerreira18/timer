@@ -1,8 +1,10 @@
 # TIMER
+![Image of Timer program](./img/timer.png)
 - Based in Dracula Theme and Omni Theme, Timer is a timer program.
 
-## Tecnologies useds in this application
+## Technologies useds in this application
 - HTML
 - CSS
+- Javascript
 - Electron
 - NodeJS
