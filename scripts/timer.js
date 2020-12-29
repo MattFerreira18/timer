@@ -1,82 +1,79 @@
-const form = document.querySelector('.form');
-const content = document.querySelector('.content');
+const playPause = document.querySelector('.play');
+const reset = document.querySelector('.reset');
 const timeNumbers = document.querySelector('.time-number');
+let seconds = 0;
+let timer;
 
-const selectors = [
-  document.querySelector('.hours'),
-  document.querySelector('.minutes'),
-  document.querySelector('.seconds')
-];
+document.addEventListener('click', (event) => {
 
-window.addEventListener('click', (event) => {
+  if (event.target === playPause) initOrPause();
+  if (event.target === reset) resetTime();
 
-  const clicked = event.target.classList;
-  console.log(clicked)
+});
 
-  if (clicked.contains('add-timer')) return openCfgTimer();
-  if (clicked.contains('save-form')) return controller();
-  if (clicked.contains('cancel-button' || 'cancel-div')) return closeForm();
+window.addEventListener('keydown', (keyEvent) => {
 
-})
+  if (keyEvent.code === 'Space') return initOrPause();
 
-function openCfgTimer() {
+});
 
-  form.style.display = 'block';
-  content.style.filter = 'blur(6px)'
+function formatTime(seconds) {
 
-};
-
-function controller() {
-
-  const [hours, minutes, seconds] = saveAndVerifyTimeCfg();
-  const [hourInSeconds, minutesInSeconds] = convertInSeconds(hours, minutes);
-
-  const fulltimeInSeconds = hourInSeconds + minutesInSeconds + seconds;
-
-  const fullTime = formatTime(fulltimeInSeconds);
-
-  sendTimeToUser(fullTime);
-  closeForm();
-
-}
-
-function saveAndVerifyTimeCfg() {
-
-  for (let i = 0; i < selectors.length; i++) {
-    if (selectors[i].value === '')
-      return alert('please insert all informations on the timer configuration');
-  };
-
-  const hours = Number(selectors[0].value);
-  const minutes = Number(selectors[1].value);
-  const seconds = Number(selectors[2].value);
-
-  return [hours, minutes, seconds];
-
-};
-
-function closeForm() {
-
-  for (let i = 0; i < selectors.length; i++) {
-    selectors[i].value = '';
-  };
-
-  form.style.display = 'none';
-  content.style.filter = `blur(0px)`;
-
-};
-
-function formatTime(fulltimeInSeconds) {
-  const date = new Date(fulltimeInSeconds * 1000);
+  const date = new Date(seconds * 1000);
   return date.toLocaleTimeString('pt-br', { hour12: false, timeZone: 'UTC' });
+
 };
 
-function convertInSeconds(hours, minutes) {
-  const hourInSeconds = hours * 3600;
-  const minutesInSeconds = minutes * 60;
-  return [hourInSeconds, minutesInSeconds];
+function initOrPause() {
+
+  if (playPause.textContent === 'Play') {
+
+    setTimeout(() => {
+
+      playPause.textContent = 'Pause';
+      playPause.classList.remove('play');
+      playPause.classList.add('pause');
+
+      timeNumbers.classList.remove('paused');
+      timeNumbers.classList.add('on');
+
+      timer = setInterval(() => {
+        seconds++;
+        timeNumbers.innerHTML = formatTime(seconds);
+
+      }, 1000);
+
+    }, 600);
+
+  } else {
+
+    setTimeout(() => {
+
+      playPause.textContent = 'Play';
+      playPause.classList.remove('pause');
+      playPause.classList.add('play');
+
+      timeNumbers.classList.remove('on');
+      timeNumbers.classList.add('paused');
+      clearInterval(timer);
+
+    }, 600);
+
+  };
+
 };
 
-function sendTimeToUser(fullTime) {
-  return timeNumbers.innerHTML = fullTime;
-}
+function resetTime() {
+
+  playPause.textContent = 'Play';
+  playPause.classList.remove('pause');
+  playPause.classList.add('play');
+
+  timeNumbers.classList.remove('paused');
+  timeNumbers.classList.add('on');
+
+  clearInterval(timer);
+  timeNumbers.innerHTML = '00:00:00';
+  seconds = 0;
+
+};
