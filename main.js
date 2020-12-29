@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { app, BrowserWindow, NativeImage } = require('electron');
-const path = require('path')
+const path = require('path');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -9,14 +9,14 @@ function createWindow() {
     // frame: false,
     autoHideMenuBar: true,
     center: true,
-    icon: path.join(__dirname, 'build/png/icon@16x.png'),
+    icon: path.join(__dirname, 'build', 'icons', 'icon@16x.png'),
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true
     }
   });
 
-  win.loadFile('views/index.html');
+  win.loadFile(path.resolve(__dirname, 'views/index.html'));
 
   const environmentState = process.env.ENVIRONMENT_STATE;
   console.log(environmentState)

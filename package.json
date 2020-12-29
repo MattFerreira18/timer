@@ -6,8 +6,7 @@
   "author": "<matheusgustomf@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec electron .",
-    "start": "electron .",
+    "dev": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist:all": "npm-run-all -p dist:*",
