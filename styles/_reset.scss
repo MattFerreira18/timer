@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #121214;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // margin: none;
+
+  a {
+    text-decoration: none;
+  }
+
+  input {
+    outline: none;
+  }
+
+  input,
+  button {
+    border: 0;
+  }
+}

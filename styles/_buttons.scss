@@ -1,0 +1,128 @@
+body,
+button,
+a {
+  font-family: "Ubuntu", sans-serif;
+  color: #fff;
+}
+
+button,
+a {
+  height: 4rem;
+  width: 14rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.4rem;
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .play {
+    background: #1ecf68;
+    transition: 300ms;
+
+    &:hover {
+      background: #06b64f;
+    }
+  }
+
+  .pause {
+    background: #f8a750;
+    transition: 300ms;
+
+    &:hover {
+      background: #fa8b15;
+    }
+  }
+
+  .reset {
+    background: #8257e5;
+    transition: 300ms;
+
+    &:hover {
+      background: #6e3edf;
+    }
+  }
+
+  .timer-stopwatch {
+    background: #bd93f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 300ms;
+
+    &:hover {
+      background: #9754f5;
+    }
+  }
+}
+
+.add-timer {
+  background: #6272a4;
+  transition: 300ms;
+
+  &:hover {
+    background: #475479;
+  }
+}
+
+.save-form {
+  background: #1ecf68;
+  transition: 300ms;
+  margin-top: 10px;
+  width: 15rem;
+
+  &:hover {
+    background: #06b64f;
+  }
+}
+
+.cancel-button {
+  position: absolute;
+  right: 0;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.cancel-button path {
+  fill: #ff5555;
+}
+
+@media (min-width: 600px) {
+  a,
+  button,
+  .add-timer {
+    width: 28rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 780px) {
+  button,
+  a {
+    height: 5rem;
+    width: 15rem;
+    margin-bottom: 1rem;
+    margin-right: 1.4rem;
+  }
+
+  .buttons {
+    flex-direction: row;
+
+    a {
+      margin-right: 0;
+    }
+  }
+
+  .add-timer {
+    width: 48rem;
+    margin-right: 0;
+  }
+}
