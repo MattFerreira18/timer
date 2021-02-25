@@ -8,7 +8,6 @@
 }
 
 body {
-  background: #121214;
   padding: 0.4rem 0.8rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,8 +141,6 @@ a {
 }
 
 .cancel-button {
-  position: absolute;
-  right: 0;
   margin-right: 2rem;
   cursor: pointer;
 }
@@ -162,7 +159,7 @@ a {
 }
 
 @media (min-width: 780px) {
-  button,
+  .buttons button,
   a {
     height: 5rem;
     width: 15rem;
@@ -275,15 +272,15 @@ a {
   display: none;
   position: absolute;
   top: 8rem;
-  -webkit-animation: drop 500ms linear;
-          animation: drop 500ms linear;
+  -webkit-animation: drop 300ms linear;
+          animation: drop 300ms linear;
 }
 
 .form .container {
-  background: #3a404e;
   height: 30rem;
   width: 20rem;
   border-radius: 0.8rem;
+  background: #2e2d31;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,14 +295,17 @@ a {
 
 .form .container .name-form {
   height: 5rem;
-  width: 20rem;
-  background: #353846;
+  width: 100%;
+  background: #3a404e;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: relative;
   top: 0;
   border-radius: 0.8rem 0.8rem 0 0;
@@ -332,7 +332,7 @@ a {
 .form .container .label label {
   color: white;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   width: 100%;
   margin: 1rem 0 0.4rem 0;
 }
@@ -356,6 +356,29 @@ a {
 
 .form .container .label input:last-child {
   margin-bottom: 1rem;
+}
+
+@media (min-width: 600px) {
+  .form {
+    top: 10rem;
+  }
+  .form .container {
+    height: 34rem;
+    width: 34rem;
+  }
+  .form .container .name-form {
+    height: 6rem;
+  }
+  .form .container .name-form p {
+    font-size: 1.8rem;
+  }
+  .form .container .label label {
+    font-size: 1.2rem;
+  }
+  .form .container .label input {
+    height: 3rem;
+    width: 28rem;
+  }
 }
 
 @-webkit-keyframes repeat-fadein {
@@ -398,5 +421,9 @@ a {
   to {
     top: 160px;
   }
+}
+
+body {
+  background: #121214;
 }
 /*# sourceMappingURL=style.css.map */

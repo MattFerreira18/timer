@@ -2,7 +2,7 @@ body,
 button,
 a {
   font-family: "Ubuntu", sans-serif;
-  color: #fff;
+  color: $font;
 }
 
 button,
@@ -24,34 +24,34 @@ a {
   flex-direction: column;
 
   .play {
-    background: #1ecf68;
+    background: $btn-confirm;
     transition: 300ms;
 
     &:hover {
-      background: #06b64f;
+      background: $btn-confirm-hover;
     }
   }
 
   .pause {
-    background: #f8a750;
+    background: $btn-paused;
     transition: 300ms;
 
     &:hover {
-      background: #fa8b15;
+      background: $btn-paused-hover;
     }
   }
 
   .reset {
-    background: #8257e5;
+    background: $btn-reset;
     transition: 300ms;
 
     &:hover {
-      background: #6e3edf;
+      background: $btn-reset-hover;
     }
   }
 
   .timer-stopwatch {
-    background: #bd93f9;
+    background: $btn-toogle;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,40 +59,38 @@ a {
     transition: 300ms;
 
     &:hover {
-      background: #9754f5;
+      background: $btn-toogle-hover;
     }
   }
 }
 
 .add-timer {
-  background: #6272a4;
+  background: $btn-form;
   transition: 300ms;
 
   &:hover {
-    background: #475479;
+    background: $btn-form-hover;
   }
 }
 
 .save-form {
-  background: #1ecf68;
+  background: $btn-confirm;
   transition: 300ms;
   margin-top: 10px;
   width: 15rem;
 
   &:hover {
-    background: #06b64f;
+    background: $btn-confirm-hover;
   }
 }
 
 .cancel-button {
-  position: absolute;
-  right: 0;
   margin-right: 2rem;
   cursor: pointer;
 }
 
 .cancel-button path {
-  fill: #ff5555;
+  fill: $btn-cancel;
 }
 
 @media (min-width: 600px) {
@@ -105,7 +103,7 @@ a {
 }
 
 @media (min-width: 780px) {
-  button,
+  .buttons button,
   a {
     height: 5rem;
     width: 15rem;

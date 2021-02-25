@@ -1,7 +1,7 @@
 .numbers {
   height: 20rem;
   width: 16rem;
-  background: #191b22;
+  background: $bg-display;
   border-radius: 0.8rem;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
 
     .paused {
       font-family: "JetBrains Mono", monospace;
-      color: #f8a750;
+      color: $font-paused;
       opacity: 1;
       animation: repeat-fadein 3s linear infinite;
     }

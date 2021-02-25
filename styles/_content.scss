@@ -1,6 +1,5 @@
 .content {
-  // height: 46rem;
-  background: #2e2d31;
+  background: $bg-secondary;
   border-radius: 0.8rem;
   padding: 1rem 2rem 1.6rem;
   display: flex;
@@ -17,7 +16,6 @@
 
 @media (min-width: 780px) {
   .content {
-    // height: 46rem;
     padding: 6rem 4rem 4rem;
     margin-top: 7rem;
   }

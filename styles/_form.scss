@@ -2,23 +2,24 @@
   display: none;
   position: absolute;
   top: 8rem;
-  animation: drop 500ms linear;
+  animation: drop 300ms linear;
 
   .container {
-    background: #3a404e;
     height: 30rem;
     width: 20rem;
     border-radius: 0.8rem;
+    background: $bg-form;
     display: flex;
     align-items: center;
     flex-direction: column;
 
     .name-form {
       height: 5rem;
-      width: 20rem;
-      background: #353846;
+      width: 100%;
+      background: $bg-header;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       position: relative;
       top: 0;
       border-radius: 0.8rem 0.8rem 0 0;
@@ -39,7 +40,7 @@
       label {
         color: white;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 1rem;
         width: 100%;
         margin: 1rem 0 0.4rem 0;
 
@@ -62,6 +63,34 @@
 
         &:last-child {
           margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .form {
+    top: 10rem;
+
+    .container {
+      height: 34rem;
+      width: 34rem;
+      .name-form {
+        height: 6rem;
+
+        p {
+          font-size: 1.8rem;
+        }
+      }
+      .label {
+        label {
+          font-size: 1.2rem;
+        }
+
+        input {
+          height: 3rem;
+          width: 28rem;
         }
       }
     }
