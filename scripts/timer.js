@@ -1,82 +1,167 @@
 const form = document.querySelector('.form');
-const content = document.querySelector('.content');
+const container = document.querySelector('.content');
+const playPause = document.querySelector('.play');
 const timeNumbers = document.querySelector('.time-number');
 
-const selectors = [
-  document.querySelector('.hours'),
-  document.querySelector('.minutes'),
-  document.querySelector('.seconds')
-];
+let timer;
+let seconds = 0;
 
-window.addEventListener('click', (event) => {
-
-  const clicked = event.target.classList;
-  console.log(clicked)
-
-  if (clicked.contains('add-timer')) return openCfgTimer();
-  if (clicked.contains('save-form')) return controller();
-  if (clicked.contains('cancel-button' || 'cancel-div')) return closeForm();
-
-})
-
-function openCfgTimer() {
-
+function openForm() {
   form.style.display = 'block';
-  content.style.filter = 'blur(6px)'
-
-};
-
-function controller() {
-
-  const [hours, minutes, seconds] = saveAndVerifyTimeCfg();
-  const [hourInSeconds, minutesInSeconds] = convertInSeconds(hours, minutes);
-
-  const fulltimeInSeconds = hourInSeconds + minutesInSeconds + seconds;
-
-  const fullTime = formatTime(fulltimeInSeconds);
-
-  sendTimeToUser(fullTime);
-  closeForm();
-
+  container.style.filter = 'blur(6px)';
 }
-
-function saveAndVerifyTimeCfg() {
-
-  for (let i = 0; i < selectors.length; i++) {
-    if (selectors[i].value === '')
-      return alert('please insert all informations on the timer configuration');
-  };
-
-  const hours = Number(selectors[0].value);
-  const minutes = Number(selectors[1].value);
-  const seconds = Number(selectors[2].value);
-
-  return [hours, minutes, seconds];
-
-};
 
 function closeForm() {
+  form.style.display = 'none';
+  container.style.filter = 'blur(0)';
+  playPause.classList.add('play');
+}
 
-  for (let i = 0; i < selectors.length; i++) {
-    selectors[i].value = '';
+function resetTime() {
+  playPause.textContent = 'Play';
+  playPause.classList.remove('pause');
+  playPause.classList.add('play');
+
+  timeNumbers.classList.remove('paused');
+  timeNumbers.classList.add('on');
+
+  clearInterval(timer);
+  timeNumbers.innerHTML = '00:00:00';
+  seconds = 0;
+}
+
+function getTime() {
+
+  const hours = document.querySelector('.hours');
+  const minutes = document.querySelector('.minutes');
+  const seconds = document.querySelector('.seconds');
+
+  if(hours.value === '' ||
+  minutes.value === '' ||
+  seconds.value === '') return window.alert('please complete all fields');
+  if(Number(hours.value) >= 24 ||
+  Number(minutes.value) >= 60 ||
+  Number(seconds.value) >= 60) return window.alert('please insert valids values');
+
+  const time = formatTime(hours.value, minutes.value, seconds.value);
+
+  closeForm();
+
+  hours.value = '';
+  minutes.value = '';
+  seconds.value = '';
+
+  return insertTime(time);
+}
+
+function insertTime(time) {
+  const timeNumbers = document.querySelector('.time-number');
+  timeNumbers.innerHTML = time;
+}
+
+function startPause() {
+
+  if(seconds === 0) return
+
+  if (playPause.textContent === 'Play') {
+
+    setTimeout(() => {
+
+      playPause.textContent = 'Pause';
+      playPause.classList.remove('play');
+      playPause.classList.add('pause');
+
+      timeNumbers.classList.remove('paused');
+      timeNumbers.classList.add('on');
+
+      timer = setInterval(() => {
+        if(seconds === 0) return timeout();
+        seconds--;
+        timeNumbers.innerHTML = formatSec(seconds);
+
+      }, 1000);
+
+    }, 600);
+
+  } else {
+
+    setTimeout(() => {
+
+      playPause.textContent = 'Play';
+      playPause.classList.remove('pause');
+      playPause.classList.add('play');
+
+      timeNumbers.classList.remove('on');
+      timeNumbers.classList.add('paused');
+      clearInterval(timer);
+
+    }, 600);
+
   };
 
-  form.style.display = 'none';
-  content.style.filter = `blur(0px)`;
-
 };
 
-function formatTime(fulltimeInSeconds) {
-  const date = new Date(fulltimeInSeconds * 1000);
-  return date.toLocaleTimeString('pt-br', { hour12: false, timeZone: 'UTC' });
-};
+function formatTime(h, m, s) {
+  seconds = (Number(h) * 3600) + (Number(m) * 60) + Number(s);
 
-function convertInSeconds(hours, minutes) {
-  const hourInSeconds = hours * 3600;
-  const minutesInSeconds = minutes * 60;
-  return [hourInSeconds, minutesInSeconds];
-};
+  let hs = Math.trunc(seconds / 3600);
+  let ms = Math.trunc(((seconds % 3600)/ 60));
+  let ss = Math.trunc((seconds % 3600) % 60);
 
-function sendTimeToUser(fullTime) {
-  return timeNumbers.innerHTML = fullTime;
+  if(hs < 10) hs = '0' + hs;
+  if(ms < 10) ms = '0' + ms;
+  if(ss < 10) ss = '0' + ss;
+
+  const formated = `${hs}:${ms}:${ss}`;
+
+  console.log(seconds);
+  console.log(formated);
+
+  return formated;
 }
+
+function formatSec(seconds) {
+  let hs = Math.trunc(seconds / 3600);
+  let ms = Math.trunc(((seconds % 3600)/ 60));
+  let ss = Math.trunc((seconds % 3600) % 60);
+
+  if(hs < 10) hs = '0' + hs;
+  if(ms < 10) ms = '0' + ms;
+  if(ss < 10) ss = '0' + ss;
+
+  const formated = `${hs}:${ms}:${ss}`;
+
+  console.log(seconds);
+  console.log(formated);
+
+  return formated;
+}
+
+function timeout() {
+  playPause.textContent = 'Play';
+  playPause.classList.remove('pause');
+  playPause.classList.add('play');
+
+  timeNumbers.classList.remove('on');
+  timeNumbers.classList.add('paused');
+  clearInterval(timer);
+
+}
+
+document.addEventListener('click', (event) => {
+  const clicked = event.target.classList;
+
+  if (clicked.contains('add-timer'))
+    return openForm();
+  if (clicked.contains('cancel-button') || clicked.contains('cancel-div'))
+    return closeForm();
+  if (clicked.contains('save-form'))
+    return getTime();
+  if (clicked.contains('reset'))
+    return resetTime();
+  if (clicked.contains('play') || clicked.contains('pause')) return startPause();
+});
+
+document.addEventListener('keydown', (keyEvent) => {
+  if (keyEvent.code === 'Space') return startPause();
+});

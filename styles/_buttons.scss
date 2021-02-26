@@ -85,7 +85,7 @@ a {
 }
 
 .cancel-button {
-  margin-right: 2rem;
+  margin-right: .8rem;
   cursor: pointer;
 }
 
@@ -99,6 +99,10 @@ a {
   .add-timer {
     width: 28rem;
     font-size: 1.4rem;
+  }
+
+  .cancel-button {
+    margin-bottom: 2rem;
   }
 }
 

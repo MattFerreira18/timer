@@ -1,21 +1,7 @@
 const playPause = document.querySelector('.play');
-const reset = document.querySelector('.reset');
 const timeNumbers = document.querySelector('.time-number');
 let seconds = 0;
 let timer;
-
-document.addEventListener('click', (event) => {
-
-  if (event.target === playPause) initOrPause();
-  if (event.target === reset) resetTime();
-
-});
-
-window.addEventListener('keydown', (keyEvent) => {
-
-  if (keyEvent.code === 'Space') return initOrPause();
-
-});
 
 function formatTime(seconds) {
 
@@ -24,7 +10,7 @@ function formatTime(seconds) {
 
 };
 
-function initOrPause() {
+function startPause() {
 
   if (playPause.textContent === 'Play') {
 
@@ -77,3 +63,19 @@ function resetTime() {
   seconds = 0;
 
 };
+
+
+document.addEventListener('click', (e) => {
+
+  const clicked = e.target.classList;
+
+  if (clicked.contains('play') || clicked.contains('pause')) startPause();
+  if (clicked.contains('reset')) resetTime();
+
+});
+
+document.addEventListener('keydown', (keyEvent) => {
+
+  if (keyEvent.code === 'Space') return startPause();
+
+});
